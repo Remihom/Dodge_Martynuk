@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dodge Challenger</title>
+<style>
+    body {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNZU9B1qgd-SI5gkiErNpEYMreHtqsn83EKPXZ_Er39ND_RpCNNgnisqzwdGPRe-4Oi4M&usqp=CAU');
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-position: center; 
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+    }
+    @media (min-width: 768px) {
+        .container {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+    .car {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+    .car img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+    .car h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    .car p {
+        text-align: left;
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+<div class="container" id="car-container">
+    <!-- Дані будуть завантажені тут через AJAX -->
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('get_car_data.php')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('car-container');
+            data.forEach(car => {
+                const carDiv = document.createElement('div');
+                carDiv.className = 'car';
+                carDiv.innerHTML = `
+                    <img src="${car.image_url}" alt="${car.model}">
+                    <h2>${car.model}</h2>
+                    <p>
+                        Engine: ${car.engine}<br>
+                        Engine type: ${car.engine_type}<br>
+                        Fuel type: ${car.fuel_type}<br>
+                        Engine capacity, cc: ${car.engine_capacity}<br>
+                        Cylinder arrangement: ${car.cylinder_arrangement}<br>
+                        Number of cylinders: ${car.number_of_cylinders}<br>
+                        Number of valves: ${car.number_of_valves}<br>
+                        Power, hp: ${car.power_hp}<br>
+                        Speed max. power, rpm: ${car.max_power_rpm}<br>
+                        Torque, Nm: ${car.torque_nm}<br>
+                        Speed max. torque, rpm: ${car.max_torque_rpm}<br>
+                        Fuel consumption (urban cycle), l. per 100 km: ${car.fuel_consumption_urban}<br>
+                        Fuel consumption (extra-urban cycle), l. per 100 km: ${car.fuel_consumption_extra_urban}<br>
+                        Fuel consumption (combined cycle), l. per 100 km: ${car.fuel_consumption_combined}<br>
+                        Number of seats: ${car.number_of_seats}<br>
+                        Length, mm: ${car.length_mm}<br>
+                        Width, mm: ${car.width_mm}<br>
+                        Height, mm: ${car.height_mm}<br>
+                        Wheelbase, mm: ${car.wheelbase_mm}<br>
+                        Curb weight, kg: ${car.curb_weight_kg}<br>
+                        Fuel tank volume, l: ${car.fuel_tank_volume_l}<br>
+                        Turning diameter, m: ${car.turning_diameter_m}<br>
+                        Ground clearance, mm: ${car.ground_clearance_mm}<br>
+                        Transmission: ${car.transmission}<br>
+                        Transmission type: ${car.transmission_type}<br>
+                        Number of gears: ${car.number_of_gears}<br>
+                        Transmission company: ${car.transmission_company}<br>
+                        Checkpoint country: ${car.checkpoint_country}<br>
+                        Drive: ${car.drive}
+                    </p>
+                `;
+                container.appendChild(carDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+</script>
+</body>
+</html>
+

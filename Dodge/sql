@@ -1,0 +1,73 @@
+CREATE DATABASE car_inventory;
+GO
+USE car_inventory;
+GO
+
+CREATE TABLE cars (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    model VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255) NOT NULL,
+    engine VARCHAR(255) NOT NULL,
+    engine_type VARCHAR(255) NOT NULL,
+    fuel_type VARCHAR(255) NOT NULL,
+    engine_capacity INT NOT NULL,
+    cylinder_arrangement VARCHAR(255) NOT NULL,
+    number_of_cylinders INT NOT NULL,
+    number_of_valves INT NOT NULL,
+    power_hp INT NOT NULL,
+    max_power_rpm INT NOT NULL,
+    torque_nm INT NOT NULL,
+    max_torque_rpm INT NOT NULL,
+    fuel_consumption_urban DECIMAL(5,2) NOT NULL,
+    fuel_consumption_extra_urban DECIMAL(5,2) NOT NULL,
+    fuel_consumption_combined DECIMAL(5,2) NOT NULL,
+    number_of_seats INT NOT NULL,
+    length_mm INT NOT NULL,
+    width_mm INT NOT NULL,
+    height_mm INT NOT NULL,
+    wheelbase_mm INT NOT NULL,
+    curb_weight_kg INT NOT NULL,
+    fuel_tank_volume_l INT NOT NULL,
+    turning_diameter_m DECIMAL(4,2) NOT NULL,
+    ground_clearance_mm INT NOT NULL,
+    transmission VARCHAR(255) NOT NULL,
+    transmission_type VARCHAR(255) NOT NULL,
+    number_of_gears INT NOT NULL,
+    transmission_company VARCHAR(255) NOT NULL,
+    checkpoint_country VARCHAR(255) NOT NULL,
+    drive VARCHAR(255) NOT NULL
+);
+
+INSERT INTO cars (
+    model, image_url, engine, engine_type, fuel_type, engine_capacity,
+    cylinder_arrangement, number_of_cylinders, number_of_valves, power_hp,
+    max_power_rpm, torque_nm, max_torque_rpm, fuel_consumption_urban,
+    fuel_consumption_extra_urban, fuel_consumption_combined, number_of_seats,
+    length_mm, width_mm, height_mm, wheelbase_mm, curb_weight_kg,
+    fuel_tank_volume_l, turning_diameter_m, ground_clearance_mm, transmission,
+    transmission_type, number_of_gears, transmission_company, checkpoint_country, drive
+) VALUES
+(
+    'Dodge Challenger SXT', 'https://ireland.apollo.olxcdn.com/v1/files/oywvmrl22pfo1-UA/image;s=1600x1095',
+    '3.6 Pentastar', 'ICE', 'Gasoline', 3604, 'V-shaped', 6, 24, 305, 6350, 363, 4800,
+    12.4, 7.8, 10.2, 4, 5021, 1922, 1450, 2946, 1739, 70, 11.6, 130, '8-automatic',
+    'Automatic', 8, 'ZF', 'USA', 'Rear'
+),
+(
+    'Dodge Challenger R/T', 'https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/14q4/638369/2015-dodge-challenger-r-t-scat-pack-automatic-test-review-car-and-driver-photo-653922-s-original.jpg',
+    '6.4 Hemi V8', 'ICE', 'Gasoline', 6417, 'V-shaped', 8, 16, 485, 6100, 644, 4200,
+    15.6, 9.6, 12.6, 4, 5021, 1922, 1450, 2946, 1739, 70, 11.6, 130, '8-automatic',
+    'Automatic', 8, 'Tremec', 'USA', 'Rear'
+),
+(
+    'Dodge Challenger SRT Hellcat', 'https://blog.way.com/wp-content/uploads/2022/11/dodge-gcd2188e76_1920-min.jpg',
+    '6.2 Hemi V8', 'ICE', 'Gasoline', 6166, 'V-shaped', 8, 16, 717, 6000, 890, 4800,
+    18.0, 11.2, 14.7, 4, 5021, 1922, 1450, 2946, 1739, 70, 11.6, 130, '8-automatic',
+    'Automatic', 8, 'Tremec', 'USA', 'Rear'
+),
+(
+    'Dodge Challenger SRT Demon170', 'https://focus.ua/static/storage/thumbs/1200x630/f/39/42383053-f6eeab057d6cf094acb246bb28c6939f.jpg?v=2545_1',
+    '6.2 Hemi V8', 'ICE', 'Gasoline', 6166, 'V-shaped', 8, 16, 1025, 6500, 1281, 4200,
+    21.0, 15.0, 31.0, 4, 5021, 1922, 1450, 2946, 1739, 70, 11.6, 130, '8-automatic',
+    'Automatic', 8, 'Tremec', 'USA', 'Rear'
+);
